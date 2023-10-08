@@ -1,0 +1,19 @@
+
+  
+  main {
+    display: grid;
+    /*
+     * auto-fit - create columns only if there's content for them
+     * auto-fill - create columns even if they will be empty
+     */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 5rem;
+    grid-gap: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+  }
+  
+  article {
+    padding: 1rem;
+   
+  }
