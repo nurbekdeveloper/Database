@@ -120,13 +120,7 @@
   });
 
   // Clients carousel (uses the Owl Carousel library)
-  $(".clients-carousel").owlCarousel({
-    autoplay: true,
-    dots: true,
-    loop: true,
-    responsive: { 0: { items: 2 }, 768: { items: 4 }, 900: { items: 6 }
-    }
-  });
+
 
 })(jQuery);
 
@@ -160,7 +154,7 @@ console.log(disabled);
 })(jQuery); // end jQuery
 
 
-//   start test quiz js 
+//   start test quiz js
 /*------------------*/
 //Store answers and then add them up
 
@@ -169,16 +163,7 @@ var answers = {};
 
 // get each question div element
 
-var question_one = document.getElementById('question-1');
-var question_two = document.getElementById('question-2');
-var question_three = document.getElementById('question-3');
-var question_four = document.getElementById('question-4');
-var question_five = document.getElementById('question-5');
-var question_six = document.getElementById('question-6');
-var question_seven = document.getElementById('question-7');
-var question_eight = document.getElementById('question-8');
-var question_nine = document.getElementById('question-9');
-var question_ten = document.getElementById('question-10');
+
 
 
 // create event listeners so that when a radio button is clicked the 'value' is added to answers object as a value. All answers from the same question are stored in the same object property so choices overright each other!
@@ -301,7 +286,7 @@ function nextQuestion(question_number) {
 
   //get the current question div element
   var el2 = document.getElementById('question-'+current_question_number);
-  
+
   //display next question
   el.style.display = "block";
 
@@ -311,7 +296,7 @@ function nextQuestion(question_number) {
 
 //add event listeners to each submit button element and call nextQuestion function on click. Also calling function to grow progress bar.
 submit1.addEventListener('click', function() {
-  
+
   nextQuestion(2);
   growProgressBar('20%');
 });
@@ -373,13 +358,7 @@ submit10.addEventListener('click', function() {
 
 });
 
-/*End of functionality -------------------------------------------------------------
-------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------
---------------------------------------------------------------------------*/
 
-
-/*Pretty things -----------------------------------------------------------------*/
 
 function growProgressBar(percentage_width) {
   var bar = document.getElementById("progress_bar");
@@ -391,4 +370,39 @@ function growProgressBar(percentage_width) {
 
 //Sometimes Always Never
 
-// test quiz end 
+// test quiz end
+
+
+
+let form = document.querySelector("#forma");
+let name = document.querySelector("#firstName");
+let phone   = document.querySelector("#phone");
+let textarea = document.querySelector("#textarea");
+let button = document.querySelector("#submit");
+let mail= document.querySelector("#pochta");
+
+const getInformation   = (e)=>{
+  e.preventDefault();
+
+
+  text = `%OA Name : ${name.value}  %OA Phone   : ${phone.value}  %OA Email : ${mail.value} %OA Message : ${textarea.value}`
+  console.log(text);
+  chat_id=-1001938269080;
+  token = `6402229016:AAHZ65Eqhe0eyAGGf4OrCxi-ddDsRJQ8afw`
+
+  url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${text}&parse_mode=html`
+
+  let api = new XMLHttpRequest();
+    api.open("GET", url, true);
+    api.send();
+
+    name.value="";
+    phone.value="";
+    textarea.value="";
+    button.value="";
+    mail.value="";
+
+
+
+}
+form.addEventListener("submit", getInformation)
